@@ -4,13 +4,13 @@ module.exports = class Command {
 		this.client = client;
 		this.name = options.name || name;
 		this.aliases = options.aliases || [];
-		this.description = options.description || 'No description provided.';
+		this.description = options.description || 'Sem descrição.';
 		this.category = options.category || 'Miscellaneous';
 		this.usage = options.usage || '';
 	}
 
 	async run(message, args) { // eslint-disable-line no-unused-vars
-		throw new Error(`Command ${this.name} doesn't provide a run method!`);
+		throw new Error(`${this.name} sem metodo de execução`);
 	}
 
 };

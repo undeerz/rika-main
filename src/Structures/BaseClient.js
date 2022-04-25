@@ -25,8 +25,31 @@ module.exports = class BaseClient extends Client {
 		this.events = new Collection();
 
 		this.utils = new Util(this);
+
+		this.getUser = this.findUser
 	}
 
+	async findUser (args, message) {
+		if (!args || !message) return;
+
+		let user;
+
+		if (/<@!?\d{17,18}>/.test(args)) {
+			user = await message.client.users.fetch(args.match(/\d{17,18}/)?.[0]);
+		}
+		else {
+			try {
+				user = await message.guild.members.search({ query: args, limit: 1, cache: false }).then((x) => x.first().user);
+			}
+			catch {}
+			try {
+				user = await message.client.users.fetch(args).catch(null);
+			}
+			catch {}
+		}
+		if (user) return user;
+	}
+	
 	validate(options) {
 		if (typeof options !== 'object') throw new TypeError('Options should be a type of Object.');
 		if (semver.lt(process.versions.node, '16.6.0')) throw new Error('This client requires Node.js v16.6.0 or higher.');

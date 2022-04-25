@@ -8,7 +8,7 @@ module.exports = class Event {
 	}
 
 	async run(...args) { // eslint-disable-line no-unused-vars
-		throw new Error(`The run method has not been implemented in ${this.name}`);
+		throw new Error(`Sem parâmetro de execução ${this.name}`);
 	}
 
 };

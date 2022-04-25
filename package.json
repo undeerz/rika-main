@@ -4,6 +4,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node .",
+    "dev": "nodemon .",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --ext .js --fix"
   },
@@ -11,6 +12,7 @@
   "license": "GPL-3.0",
   "devDependencies": {
     "eslint": "^8.13.0",
+    "nodemon": "^2.0.15",
     "semver": "^7.3.7"
   },
   "dependencies": {

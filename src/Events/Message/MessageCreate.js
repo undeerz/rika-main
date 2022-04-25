@@ -16,7 +16,7 @@ module.exports = class extends Event {
 		const mentionRegexPrefix = RegExp(`^<@!?${this.client.user.id}> `);
 
 		if (message.content.match(mentionRegex)) {
-			return message.reply({ content: `Hi, my prefix for this server is \`${this.client.prefix}\`.` });
+			return message.reply({ content: `:wink: Hey, meu prefixo é \`${this.client.prefix}\`.` });
 		}
 
 		const prefix = message.content.match(mentionRegexPrefix) ? message.content.match(mentionRegexPrefix)[0] : this.client.prefix;
@@ -32,7 +32,7 @@ module.exports = class extends Event {
 			} catch (error) {
 				console.error(error.stack);
 
-				return message.reply({ content: 'An error has occured when executing this command.' });
+				return message.reply({ content: 'Um erro foi encontrado ao executar esse comando.' });
 			}
 		}
 	}
