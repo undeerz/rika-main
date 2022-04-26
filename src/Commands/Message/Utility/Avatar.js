@@ -15,7 +15,10 @@ module.exports = class extends Command {
     let user = await this.client.getUser(args[0], message);
     if (!user) user = message.author;
 
-    const avatar = user.displayAvatarURL({ dynamic: true, size: 2048 });
+    const avatar = user.displayAvatarURL({
+      dynamic: true,
+      size: 2048,
+    });
 
     const embed = new MessageEmbed()
       .setAuthor({
