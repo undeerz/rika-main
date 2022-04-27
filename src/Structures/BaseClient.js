@@ -1,7 +1,6 @@
 const { Client, Collection, Intents } = require('discord.js');
 const Util = require('./Util');
 const semver = require('semver');
-
 module.exports = class BaseClient extends Client {
 
 	constructor(options = {}) {
@@ -27,6 +26,10 @@ module.exports = class BaseClient extends Client {
 		this.utils = new Util(this);
 
 		this.getUser = this.findUser
+
+		this.userData = require('../Schemas/userData');
+		
+		this.databaseCache = {};
 	}
 
 	validate(options) {
@@ -43,6 +46,9 @@ module.exports = class BaseClient extends Client {
 		if (!options.owners.length) throw new Error('You must pass a list of owner(s) for the Client.');
 		if (!Array.isArray(options.owners)) throw new TypeError('Owner(s) should be a type of Array<String>.');
 		this.owners = options.owners;
+
+		if (!options.mongouri) throw new Error('You must pass MongoDB URI for the Client.');
+		this.mongouri = options.mongouri;
 	}
 
 	async findUser (args, message) {
@@ -67,6 +73,7 @@ module.exports = class BaseClient extends Client {
 	}
 
 	async start(token = this.token) {
+		this.utils.loadDatabases();
 		this.utils.loadCommands();
 		this.utils.loadEvents();
 		super.login(token);

@@ -3,6 +3,7 @@ const { promisify } = require('node:util');
 const glob = promisify(require('glob'));
 const Command = require('./Command');
 const Event = require('./Event');
+const { connect } = require('mongoose')
 
 module.exports = class Util {
 
@@ -38,6 +39,13 @@ module.exports = class Util {
 			.replace(/Moderate/g, 'Timeout')
 			.replace(/Tts/g, 'Text-to-Speech')
 			.replace(/Use Vad/g, 'Use Voice Acitvity');
+	}
+
+	async loadDatabases() {
+		return connect(this.client.mongouri, {
+			useNewUrlParser: true,
+			useUnifiedTopology: true
+		});
 	}
 
 	async loadCommands() {

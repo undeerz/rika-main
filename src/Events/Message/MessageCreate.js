@@ -24,11 +24,22 @@ module.exports = class extends Event {
 
 		const [cmd, ...args] = message.content.slice(prefix.length).trim().split(/ +/g);
 
+		const userDatabase = await this.client.userData.findOne({
+			id : message.author.id
+		});
+
 		const command = this.client.commands.get(cmd.toLowerCase()) || this.client.commands.get(this.client.aliases.get(cmd.toLowerCase()));
 		if (command) {
 			try {
-				await message.channel.sendTyping();
-				await command.run(message, args);
+				if(!userDatabase) {
+					message.reply(':scream_cat: Opa, parece que você esta sendo registrado em meu banco de dados.\n:nerd: Por favor use o comando novamente.')
+					await this.client.userData.create({
+						id : message.author.id
+					})
+				} else {
+					await message.channel.sendTyping();
+					await command.run(message, args);
+				}
 			} catch (error) {
 				console.error(error.stack);
 
