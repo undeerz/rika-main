@@ -13,7 +13,7 @@ module.exports = class extends Command {
 
   async run(message, args) {
     let user = await this.client.getUser(args[0], message);
-    if (!user) user = message.author;
+    if (!args[0]) user = message.author;
 
     const avatar = user.displayAvatarURL({
       dynamic: true,
@@ -27,7 +27,8 @@ module.exports = class extends Command {
       })
       .setImage(avatar);
 
-    const row = new MessageActionRow().addComponents(
+    const row = new MessageActionRow()
+    .addComponents(
       new MessageButton()
         .setURL(`${avatar}`)
         .setLabel("Download")
