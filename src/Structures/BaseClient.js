@@ -25,11 +25,9 @@ module.exports = class BaseClient extends Client {
 
 		this.utils = new Util(this);
 
-		this.getUser = this.findUser
+		this.getUser = this.findUser;
 
 		this.userData = require('../Schemas/userData');
-		
-		this.databaseCache = {};
 	}
 
 	validate(options) {
@@ -51,23 +49,20 @@ module.exports = class BaseClient extends Client {
 		this.mongouri = options.mongouri;
 	}
 
-	async findUser (args, message) {
+	async findUser(args, message) {
 		if (!args || !message) return;
-		
+
 		let user;
 
 		if (/<@!?\d{17,18}>/.test(args)) {
 			user = await message.client.users.fetch(args.match(/\d{17,18}/)?.[0]);
-		}
-		else {
+		} else {
 			try {
 				user = await message.guild.members.search({ query: args, limit: 1, cache: false }).then((x) => x.first().user);
-			}
-			catch {}
+			} catch {}
 			try {
 				user = await message.client.users.fetch(args).catch(null);
-			}
-			catch {}
+			} catch {}
 		}
 		if (user) return user;
 	}

@@ -3,7 +3,7 @@ const { promisify } = require('node:util');
 const glob = promisify(require('glob'));
 const Command = require('./Command');
 const Event = require('./Event');
-const { connect } = require('mongoose')
+const { connect } = require('mongoose');
 
 module.exports = class Util {
 
@@ -81,5 +81,5 @@ module.exports = class Util {
 			}
 		});
 	}
-	
+
 };
