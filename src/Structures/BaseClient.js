@@ -1,6 +1,9 @@
 const { Client, Collection, Intents } = require('discord.js');
 const Util = require('./Util');
 const semver = require('semver');
+
+const moment = require("moment");
+require("moment-duration-format");
 module.exports = class BaseClient extends Client {
 
 	constructor(options = {}) {
@@ -26,6 +29,8 @@ module.exports = class BaseClient extends Client {
 		this.utils = new Util(this);
 
 		this.getUser = this.findUser;
+		this.timeFormat = this.formatTime;
+		this.convertMilliseconds = this.convertMilliseconds
 
 		this.userData = require('../Schemas/userData');
 	}
@@ -66,6 +71,23 @@ module.exports = class BaseClient extends Client {
 		}
 		if (user) return user;
 	}
+
+	formatTime(time) {
+    if (!time) return;
+    return moment.duration(time).format("d[d] h[h] m[m] s[s]");
+  }
+
+	convertMilliseconds(ms) {
+    const seconds = ~~(ms / 1000);
+    const minutes = ~~(seconds / 60);
+    const hours = ~~(minutes / 60);
+
+    return {
+      hours: hours % 24,
+      minutes: minutes % 60,
+      seconds: seconds % 60,
+    };
+  }
 
 	async start(token = this.token) {
 		this.utils.loadDatabases();
