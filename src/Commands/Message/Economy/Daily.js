@@ -17,10 +17,13 @@ module.exports = class extends Command {
     });
 
     let coins = Math.floor(Math.random() * 500);
-    let coinsvip = Math.floor(Math.random() * 1000);
     let daily = userData.daily;
 
     let time = 8.64e7 - (Date.now() - daily);
+
+    if (userData.premium === true) {
+      coins = 2000;
+    }
 
     if (daily !== null && 8.64e7 - (Date.now() - daily) > 0) {
       return message.reply(
@@ -37,7 +40,6 @@ module.exports = class extends Command {
     }
 
     if (userData) {
-      userData.daily = Date.now();
       userData.coins = userData.coins + coins;
       await userData.save();
     } else {
@@ -48,5 +50,4 @@ module.exports = class extends Command {
       });
     }
   }
-  
 };

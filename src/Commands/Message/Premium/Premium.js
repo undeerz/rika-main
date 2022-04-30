@@ -1,5 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const Command = require("../../../Structures/Command");
+const Emojis = require("../../../Utils/Emojis");
 
 module.exports = class extends Command {
   constructor(...args) {
@@ -16,16 +17,33 @@ module.exports = class extends Command {
       id: message.author.id,
     });
 
-    if (member.premium === false) {
-      return message.reply("» Você não possue vantagens **Premium** no Bot.");
-    }
+    const hasPremium =
+      member.premium != false ? `Premium ativado ${Emojis.paimon1}` : "";
 
     const embed = new MessageEmbed()
       .setAuthor({
         name: message.author.tag,
         iconURL: message.author.displayAvatarURL({ dynamic: true }),
       })
-      .setDescription(`» **Em desenvolvimento.**`);
+      .setTitle(hasPremium)
+      .setDescription(`» **Vantagens Premium**`)
+      .addFields(
+        {
+          name: "Daily :",
+          value: "`5000C`",
+          inline: true,
+        },
+        {
+          name: "Gif Ban :",
+          value: "`Desenvolvimento`",
+          inline: true,
+        },
+        {
+          name: "... :",
+          value: "`...`",
+          inline: true,
+        }
+      );
 
     message.reply({ embeds: [embed] });
   }
