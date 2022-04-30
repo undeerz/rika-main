@@ -27,19 +27,20 @@ module.exports = class extends Command {
 
     if (daily !== null && 8.64e7 - (Date.now() - daily) > 0) {
       return message.reply(
-        `${message.author}, tente novamente em \`${this.client.timeFormat(
+        `» ${message.author}, tente novamente em \`${this.client.timeFormat(
           this.client.convertMilliseconds(time)
         )}\``
       );
     } else {
       message.reply(
-        `${
+        `» ${
           message.author
         }, você coletou \`${coins.toLocaleString()}\` coins do seu prêmio diário.`
       );
     }
 
     if (userData) {
+      userData.daily = Date.now();
       userData.coins = userData.coins + coins;
       await userData.save();
     } else {
