@@ -7,7 +7,7 @@ module.exports = class extends Command {
     super(...args, {
       name: "gifban",
       aliases: ["gban"],
-      description: "Set seu gifban.",
+      description: "Altere seu gif de banimento.",
       category: "Premium",
     });
   }
@@ -36,15 +36,15 @@ module.exports = class extends Command {
 
       if (!link) {
         return message.reply(
-          `${message.author}, não foi provido nenhum link para salvar.`
+          `» ${message.author}, não foi provido nenhum link para salvar.`
         );
       } else if (link === userData.gifban) {
         return message.reply(
-          `${message.author}, o link inserido é o mesmo setado atualmente.`
+          `» ${message.author}, o link inserido é o mesmo setado atualmente.`
         );
       } else if (!link.includes(".gif")) {
         return message.reply(
-          `${message.author}, para salvar o link tem que ser necessariamente um Gif.`
+          `» ${message.author}, para salvar o link tem que ser necessariamente um Gif.`
         );
       } else {
         if (userData) {
