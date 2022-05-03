@@ -11,7 +11,7 @@ module.exports = class extends Command {
     });
   }
 
-  async run(message) {
+  async run(message, args) {
     if (message.author.id !== "852687463846772747") return;
   }
 };
