@@ -13,12 +13,19 @@ module.exports = class extends Command {
 
   async run(message, args) {
     if (!message.member.permissions.has("BAN_MEMBERS")) {
-      return message.reply("Você não tem permissão");
+      return message.reply(
+        `» ${message.author}, você não tem permissão para banir algum membro.`
+      );
+    }
+    if (!message.guild.me.permissions.has("BAN_MEMBERS")) {
+      return message.reply(
+        `» ${message.author}, eu não tenho permissão nescessaria para completar essa ação.`
+      );
     }
 
     const member = await this.client.getUser(args[0], message);
     if (!args[0]) {
-      return message.reply("Mencione o membro");
+      return message.reply(`» ${message.author}, mencione um membro.`);
     }
     let reason = args.slice(1).join(" ");
     if (!reason) reason = "Não informado";
@@ -30,7 +37,9 @@ module.exports = class extends Command {
     const gif = userData.premium != false ? `${userData.gifban}` : "";
 
     if (member == message.author.id) {
-      return message.reply("Você não pode banir a si mesmo");
+      return message.reply(
+        `» ${message.author}, você não pode banir a si mesmo.`
+      );
     }
 
     const row = new MessageActionRow();
