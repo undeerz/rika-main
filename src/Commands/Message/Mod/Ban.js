@@ -80,7 +80,9 @@ module.exports = class extends Command {
             )
             .setImage(`${gif}`);
 
-          message.reply({ embeds: [embed] });
+          message.reply({ embeds: [embed] }).then((m) => {
+            setTimeout(() => m.delete(), 5000);
+          });
 
           break;
         }
