@@ -12,6 +12,10 @@ module.exports = class extends Command {
   }
 
   async run(message, args) {
+    if (!message.member.permissions.has("BAN_MEMBERS")) {
+      return message.reply("Você não tem permissão");
+    }
+
     const member = await this.client.getUser(args[0], message);
     if (!args[0]) {
       return message.reply("Mencione o membro");
@@ -24,10 +28,6 @@ module.exports = class extends Command {
     });
 
     const gif = userData.premium != false ? `${userData.gifban}` : "";
-
-    if (!message.member.permissions.has("BAN_MEMBERS")) {
-      return message.reply("Você não tem permissão");
-    }
 
     if (member == message.author.id) {
       return message.reply("Você não pode banir a si mesmo");
