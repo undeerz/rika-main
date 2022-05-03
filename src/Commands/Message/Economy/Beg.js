@@ -48,7 +48,7 @@ module.exports = class extends Command {
         },
         {
           name: `» Banco`,
-          value: '0',
+          value: "0",
           inline: true,
         }
       );
