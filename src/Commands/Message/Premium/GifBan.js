@@ -1,4 +1,4 @@
-const { MessageEmbed, Emoji } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const Command = require("../../../Structures/Command");
 const Emojis = require("../../../Utils/Emojis");
 
