@@ -31,12 +31,18 @@ module.exports = class extends Command {
       .addFields(
         {
           name: "» Informações Gerais :",
-          value: `ID : **${server.id}**\nDono : **${await server.fetchOwner()}**\nTotal de Membros : **${server.memberCount}**`,
+          value: `ID : **${
+            server.id
+          }**\nDono : **${await server.fetchOwner()}**\nTotal de Membros : **${
+            server.memberCount
+          }**`,
           inline: true,
         },
         {
           name: "» Informações Adicionais :",
-          value: `Cargos : **${server.roles.cache.size.toString()}**\nTotal de Banimentos : **${bans}**\nBoost's : **${server.premiumSubscriptionCount}**`,
+          value: `Cargos : **${server.roles.cache.size.toString()}**\nTotal de Banimentos : **${bans}**\nBoost's : **${
+            server.premiumSubscriptionCount
+          }**`,
           inline: true,
         }
       );
