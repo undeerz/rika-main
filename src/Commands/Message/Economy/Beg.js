@@ -26,13 +26,10 @@ module.exports = class extends Command {
     }
 
     let value = userData.coins.toLocaleString();
+    let bank = userData.bank.toLocaleString();
 
     if (user.bot) {
       return message.reply("» Você não pode ver a carteira de bots.");
-    }
-
-    if (userData.coins === 0) {
-      return message.reply("» Nunca usou o bot");
     }
 
     const embed = new MessageEmbed()
@@ -48,7 +45,7 @@ module.exports = class extends Command {
         },
         {
           name: `» Banco`,
-          value: "0",
+          value: bank,
           inline: true,
         }
       );
