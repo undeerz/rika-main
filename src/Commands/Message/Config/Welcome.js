@@ -42,17 +42,17 @@ module.exports = class extends Command {
         )
         .addFields(
           {
-            name: `» Mensagem`,
-            value: setmessage,
+            name: `» Mensagem :`,
+            value: `\`${setmessage}\``,
             inline: false,
           },
           {
-            name: `» Status`,
+            name: `» Status :`,
             value: `${setstatus === false ? "Desativado" : "Ativado"}`,
             inline: false,
           },
           {
-            name: `» Canal`,
+            name: `» Canal :`,
             value: `<#${setcanal}> (${setcanal})`,
             inline: false,
           }
