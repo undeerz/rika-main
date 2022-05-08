@@ -33,6 +33,7 @@ module.exports = class BaseClient extends Client {
 		this.convertMilliseconds = this.convertMilliseconds
 
 		this.userData = require('../Schemas/userData');
+		this.guildData = require('../Schemas/guildData');
 	}
 
 	validate(options) {

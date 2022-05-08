@@ -34,6 +34,16 @@ module.exports = class extends Event {
       id: message.author.id,
     });
 
+    const guild = await this.client.guildData.findOne({
+      id: message.guild.id,
+    });
+
+    if (!guild) {
+      await this.client.guildData.create({
+        id: message.guild.id,
+      });
+    }
+
     const command =
       this.client.commands.get(cmd.toLowerCase()) ||
       this.client.commands.get(this.client.aliases.get(cmd.toLowerCase()));
