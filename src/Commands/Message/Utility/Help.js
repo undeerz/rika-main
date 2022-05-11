@@ -28,6 +28,9 @@ module.exports = class extends Command {
     const mod = readdirSync("./src/Commands/Message/Mod").map(
       (arquivo) => `${arquivo.replace(/.js/g, "")}`
     );
+    const fun = readdirSync("./src/Commands/Message/Fun").map(
+      (arquivo) => `${arquivo.replace(/.js/g, "")}`
+    );
 
     const embed = new MessageEmbed()
       .setAuthor({
@@ -38,6 +41,10 @@ module.exports = class extends Command {
         {
           name: `» Utilidades :`,
           value: `\`${utility}\``,
+        },
+        {
+          name: `» Diversão :`,
+          value: `\`${fun}\``,
         },
         {
           name: `» Economia :`,
