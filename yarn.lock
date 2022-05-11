@@ -1066,6 +1066,13 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
+nekos-best.js@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/nekos-best.js/-/nekos-best.js-5.1.0.tgz#880c76fa1127dab3bb961fa6380f676d2d56f28c"
+  integrity sha512-KUREmvMKLdSeJOkKUlk3cmkSe+5ywY7lHNcRErvzAVlKywxRUD1i++CCpSxxDYRMvUbff+IjW+fOgU1FuxC7ng==
+  dependencies:
+    petitio "^1.4.0"
+
 node-fetch@^2.6.1:
   version "2.6.7"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
@@ -1156,6 +1163,11 @@ path-key@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/path-key/-/path-key-3.1.1.tgz#581f6ade658cbba65a0d3380de7753295054f375"
   integrity sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==
+
+petitio@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/petitio/-/petitio-1.4.0.tgz#1887cba89b95de2c61ef774a2f1baf68845ba022"
+  integrity sha512-9LaVd/5BLmbNU8Q4Ax8NezihiPt2ISNqi2vKilEchSSf+YSOXxfsLUb0SUmDskm1WkBOVTsqdyuyYI0RYKqr0Q==
 
 picomatch@^2.0.4, picomatch@^2.2.1:
   version "2.3.1"
