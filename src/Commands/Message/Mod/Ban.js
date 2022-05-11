@@ -42,6 +42,10 @@ module.exports = class extends Command {
       );
     }
 
+    if (member === undefined) {
+      return message.reply(`» ${message.author}, mencione um membro.`);
+    }
+
     const row = new MessageActionRow();
     const confirm = new MessageButton()
       .setCustomId("confirm")
@@ -99,14 +103,11 @@ module.exports = class extends Command {
         case "cancel": {
           msg.delete();
 
-          const embed = new MessageEmbed()
-          .setDescription(
-            `Banimento cancelado`
-          );
-
-          message.reply({ embeds: [embed] }).then((m) => {
-            setTimeout(() => m.delete(), 5000);
-          });
+          message
+            .reply({ content: `» ${message.author}, banimento cancelado.` })
+            .then((m) => {
+              setTimeout(() => m.delete(), 5000);
+            });
 
           break;
         }
