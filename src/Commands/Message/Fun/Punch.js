@@ -7,8 +7,8 @@ neko.init();
 module.exports = class extends Command {
   constructor(...args) {
     super(...args, {
-      name: "slap",
-      aliases: ["tapa"],
+      name: "punch",
+      aliases: ["bater"],
       description: "Bata em alguém",
       category: "Fun",
     });
@@ -18,9 +18,9 @@ module.exports = class extends Command {
     let member = await this.client.getUser(args[0], message);
     if (!member)
       return message.channel.send(`» ${message.author}, user não encontrado.`);
-    let img = await neko.fetchRandom("slap");
+    let img = await neko.fetchRandom("punch");
     const embed = new MessageEmbed()
-      .setDescription(`<@${message.author.id}> bateu no(a) <@${member.id}>`)
+      .setDescription(`<@${message.author.id}> socou <@${member.id}>`)
       .setImage(img.results[0].url);
 
     message.reply({ embeds: [embed] });
