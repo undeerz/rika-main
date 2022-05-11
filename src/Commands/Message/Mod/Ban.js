@@ -95,6 +95,21 @@ module.exports = class extends Command {
 
           break;
         }
+
+        case "cancel": {
+          msg.delete();
+
+          const embed = new MessageEmbed()
+          .setDescription(
+            `Banimento cancelado`
+          );
+
+          message.reply({ embeds: [embed] }).then((m) => {
+            setTimeout(() => m.delete(), 5000);
+          });
+
+          break;
+        }
       }
     });
 
