@@ -22,6 +22,12 @@ module.exports = class extends Command {
     const eco = readdirSync("./src/Commands/Message/Economy").map(
       (arquivo) => `${arquivo.replace(/.js/g, "")}`
     );
+    const cfg = readdirSync("./src/Commands/Message/Config").map(
+      (arquivo) => `${arquivo.replace(/.js/g, "")}`
+    );
+    const mod = readdirSync("./src/Commands/Message/Mod").map(
+      (arquivo) => `${arquivo.replace(/.js/g, "")}`
+    );
 
     const embed = new MessageEmbed()
       .setAuthor({
@@ -34,12 +40,20 @@ module.exports = class extends Command {
           value: `\`${utility}\``,
         },
         {
+          name: `» Economia :`,
+          value: `\`${eco}\``,
+        },
+        {
+          name: `» Moderação :`,
+          value: `\`${mod}\``,
+        },
+        {
           name: `» Premium :`,
           value: `\`${premium}\``,
         },
         {
-          name: `» Economia :`,
-          value: `\`${eco}\``,
+          name: `» Configurações :`,
+          value: `\`${cfg}\``,
         }
       );
 

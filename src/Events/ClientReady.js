@@ -8,10 +8,16 @@ module.exports = class extends Event {
     });
   }
 
-  async run() {
+  async run(client) {
     console.log(`Logged ${this.client.user.tag}`);
     console.log(
       `Loaded ${this.client.commands.size} commands & ${this.client.events.size} events!`
     );
+
+    setInterval(() => {
+      client.user.setActivity(
+        `r<help - ${this.client.guilds.cache.size.toLocaleString()} servers`
+      );
+    }, 60 * 60 * 1000);
   }
 };
