@@ -22,7 +22,7 @@
     "glob": "^8.0.1",
     "moment": "^2.29.3",
     "moment-duration-format": "^2.3.2",
-    "mongoose": "^6.3.2",
+    "mongoose": "^6.3.3",
     "nekos-best.js": "^5.1.0"
   }
 }
