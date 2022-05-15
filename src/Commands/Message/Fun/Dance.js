@@ -1,8 +1,6 @@
 const Command = require("../../../Structures/Command");
 const { MessageEmbed } = require("discord.js");
-const { Client, fetchRandom } = require("nekos-best.js");
-const neko = new Client();
-neko.init();
+const neko = require("nekos-best.js");
 
 module.exports = class extends Command {
   constructor(...args) {
