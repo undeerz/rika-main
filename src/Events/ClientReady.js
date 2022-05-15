@@ -22,6 +22,6 @@ module.exports = class extends Event {
       client.user.setActivity(
         `r<help - ${this.client.guilds.cache.size.toLocaleString()} servers`
       );
-    }, 60 * 60 * 1000);
+    }, 60 * 60 * 100);
   }
 };
