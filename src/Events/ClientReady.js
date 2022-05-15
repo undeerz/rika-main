@@ -9,10 +9,9 @@ module.exports = class extends Event {
   }
 
   async run(client) {
-    const { Client, fetchRandom } = require("nekos-best.js");
+    const { Client } = require("nekos-best.js");
     const neko = new Client();
     neko.init();
-    
 
     console.log(`Logged ${this.client.user.tag}`);
     console.log(
