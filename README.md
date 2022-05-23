@@ -1,5 +1,5 @@
 # Rika
-an open source discord bot project
+An open source discord bot project
 
 <strong>EN :</strong> I abandoned the project because of school :( <br>
 <strong>PT :</strong> Abandonei o projeto por causa da escola :(
